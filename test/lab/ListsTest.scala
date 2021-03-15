@@ -2,7 +2,8 @@ package lab
 
 import org.junit.jupiter.api.Test
 import u03.Lists.List._
-import lab.Lists.{filter, map, _}
+import lab.Lists.{filter, map, flatMap, _}
+import u02.Optionals.Option._
 import org.junit.jupiter.api.Assertions.assertEquals
 
 class ListsTest {
@@ -29,5 +30,10 @@ class ListsTest {
   @Test def testFilter(){
     val list = Cons(10, Cons(20, Cons(30, Nil())))
     assertEquals(Cons(20, Cons(30, Nil())), filter(list)(_ >=20))
+  }
+
+  @Test def testMax(): Unit ={
+    val list = Cons(10, Cons(20, Cons(30, Nil())))
+    assertEquals(Some(30), max(list))
   }
 }

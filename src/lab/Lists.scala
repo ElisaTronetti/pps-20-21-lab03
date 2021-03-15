@@ -2,6 +2,8 @@ package lab
 
 import u03.Lists._
 import u03.Lists.List._
+import u02.Optionals._
+import u02.Optionals.Option._
 
 import scala.annotation.tailrec
 
@@ -28,4 +30,12 @@ object Lists {
     case a if pred(a) => Cons(a, Nil())
     case _ => Nil()
   })
+
+  def max(l: List[Int]): Option[Int] = l match {
+    case Cons(h,t) => filter(t)(_>h) match {
+      case Cons(h,_) =>max(drop(l,1))
+      case _ => Some(h)
+    }
+    case Nil() => None()
+  }
 }

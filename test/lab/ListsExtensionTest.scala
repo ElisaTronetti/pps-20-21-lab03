@@ -2,11 +2,11 @@ package lab
 
 import org.junit.jupiter.api.Test
 import u03.Lists.List._
-import lab.Lists.{filter, map, flatMap, _}
+import lab.ListsExtension.{filter, map, flatMap, _}
 import u02.Optionals.Option._
 import org.junit.jupiter.api.Assertions.assertEquals
 
-class ListsTest {
+class ListsExtensionTest {
 
   @Test def testDrop(){
     val list = Cons(10, Cons(20, Cons(30, Nil())))

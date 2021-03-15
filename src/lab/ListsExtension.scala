@@ -7,7 +7,7 @@ import u02.Optionals.Option._
 
 import scala.annotation.tailrec
 
-object Lists {
+object ListsExtension {
 
   //ex 1.a
   @tailrec

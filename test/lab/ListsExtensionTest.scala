@@ -58,4 +58,10 @@ class ListsExtensionTest {
     assertEquals(8, foldRight(list)(2)(_+_))
   }
 
+  @Test def testFoldLeftAndRight(): Unit ={
+    val list = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+    assertEquals(-16, foldLeft(list)(0)(_-_))
+    assertEquals(-8, foldRight(list)(0)(_-_))
+  }
+
 }

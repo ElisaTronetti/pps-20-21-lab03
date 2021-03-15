@@ -2,7 +2,7 @@ package lab
 
 import org.junit.jupiter.api.Test
 import u03.Lists.List._
-import lab.ListsExtension.{filter, flatMap, map, _}
+import lab.ListsExtension.{filter, flatMap, map, reverse, _}
 import u02.Optionals.Option._
 import org.junit.jupiter.api.Assertions.assertEquals
 import u02.Modules.Person
@@ -50,5 +50,10 @@ class ListsExtensionTest {
     val list = Cons(1, Cons(2, Cons(3, Nil())))
     assertEquals(6, foldLeft(list)(0)(_+_))
     assertEquals(8, foldLeft(list)(2)(_+_))
+  }
+
+  @Test def testReverse(): Unit ={
+    val list = Cons(1, Cons(2, Cons(3, Nil())))
+    assertEquals(Cons(3, Cons(2, Cons(1, Nil()))), reverse(list))
   }
 }

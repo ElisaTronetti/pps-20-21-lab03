@@ -2,7 +2,7 @@ package lab
 
 import org.junit.jupiter.api.Test
 import u03.Lists.List._
-import lab.Lists._
+import lab.Lists.{map, _}
 import org.junit.jupiter.api.Assertions.assertEquals
 
 class ListsTest {
@@ -19,6 +19,11 @@ class ListsTest {
     val list = Cons(10, Cons(20, Cons(30, Nil())))
     assertEquals(Cons(11,Cons(21, Cons(31, Nil()))), flatMap(list)(v => Cons(v+1, Nil())))
     assertEquals(Cons(11,Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(list)(v => Cons(v+1, Cons(v+2, Nil()))))
+  }
+
+  @Test def testMap(){
+    val list = Cons(10, Cons(20, Cons(30, Nil())))
+    assertEquals(Cons(11,Cons(21, Cons(31, Nil()))), map(list)(_+1))
   }
 
 }

@@ -31,9 +31,12 @@ object Lists {
     case _ => Nil()
   })
 
+  //ex 2
+  //filter allows to check if there are elements bigger then h: if so, drop h and repeat, otherwise return h
+  @tailrec
   def max(l: List[Int]): Option[Int] = l match {
     case Cons(h,t) => filter(t)(_>h) match {
-      case Cons(h,_) =>max(drop(l,1))
+      case Cons(_,_) =>max(drop(l,1))
       case _ => Some(h)
     }
     case Nil() => None()

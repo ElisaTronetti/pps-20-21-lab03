@@ -15,5 +15,7 @@ object StreamExtension {
     case _ => stream
   }
 
+  //ex 6
+  def constant[A](c: A): Stream[A] = iterate(c)(_ => c)
 
 }

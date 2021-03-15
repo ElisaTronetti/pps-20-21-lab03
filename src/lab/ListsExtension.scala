@@ -1,5 +1,7 @@
 package lab
 
+import u02.Modules.Person
+import u02.Modules.Person.Teacher
 import u03.Lists._
 import u03.Lists.List._
 import u02.Optionals._
@@ -41,4 +43,11 @@ object ListsExtension {
     }
     case Nil() => None()
   }
+
+  //ex 3
+  //flatmap of l, the function in case of teacher takes the course, return an empty list otherwise
+  def coursesByPeople(l: List[Person]): List[String] = flatMap(l)({
+    case Teacher(_,c) => Cons(c, Nil())
+    case _ => Nil()
+  })
 }

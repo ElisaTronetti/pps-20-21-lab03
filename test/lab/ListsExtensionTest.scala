@@ -2,9 +2,13 @@ package lab
 
 import org.junit.jupiter.api.Test
 import u03.Lists.List._
-import lab.ListsExtension.{filter, map, flatMap, _}
+import lab.ListsExtension.{filter, flatMap, map, _}
 import u02.Optionals.Option._
 import org.junit.jupiter.api.Assertions.assertEquals
+import u02.Modules.Person
+import u02.Modules.Person.{Student, Teacher, _}
+import u03.Lists
+
 
 class ListsExtensionTest {
 
@@ -32,8 +36,13 @@ class ListsExtensionTest {
     assertEquals(Cons(20, Cons(30, Nil())), filter(list)(_ >=20))
   }
 
-  @Test def testMax(): Unit ={
+  @Test def testMax(){
     val list = Cons(10, Cons(20, Cons(30, Nil())))
     assertEquals(Some(30), max(list))
+  }
+
+  @Test def testCoursesByPeople() {
+    val list : Lists.List[Person] = Cons(Student("Marco", 2020), Cons(Teacher("Bravetti", "LCMC"), Cons(Teacher("Ricci", "PCD"), Nil())))
+    assertEquals(Cons("LCMC", Cons("PCD", Nil())), coursesByPeople(list))
   }
 }

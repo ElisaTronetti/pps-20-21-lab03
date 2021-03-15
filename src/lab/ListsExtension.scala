@@ -52,8 +52,8 @@ object ListsExtension {
   })
 
   //ex 4
-  //i drop the first element in list, i take the head and apply the function with the value
-  //in input and then recursive iteration until the end of the list (return init at the end)
+  //apply f to init and the head and then
+  //recursive iteration starting by the tail until the end of the list (return init at the end)
   @tailrec
   def foldLeft[A,B](l: List[A])(init: B)(f: (B,A) => B): B = l match {
     case Cons(h,t) => foldLeft(t)(f(init,h))(f)
@@ -65,7 +65,7 @@ object ListsExtension {
   //I think it would be even worst)
   def foldRight[A,B](l: List[A])(init: B)(f: (A,B) => B): B = l match {
     case Cons(h,t) => f(h, foldRight(t)(init)(f))
-    case Nil() => init
+    case _ => init
   }
 
 }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import u03.Lists.List.{Cons, Nil, _}
 import u03.Streams.Stream.{iterate, take, toList, _}
-import lab.StreamExtension.{constant, drop}
+import lab.StreamExtension.{constant, drop, fibs}
 
 class StreamExtensionTest {
 
@@ -16,5 +16,10 @@ class StreamExtensionTest {
   @Test def testIterate(): Unit ={
     val res = toList(take(constant("x"))(3))
     assertEquals(Cons("x", Cons("x", Cons("x", Nil()))), res)
+  }
+
+  @Test def testFibs(): Unit ={
+    val res = toList(take(fibs)(5))
+    assertEquals(Cons(0, Cons(1, Cons(1, Cons(2, Cons(3, Nil()))))), res)
   }
 }

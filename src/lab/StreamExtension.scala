@@ -18,4 +18,15 @@ object StreamExtension {
   //ex 6
   def constant[A](c: A): Stream[A] = iterate(c)(_ => c)
 
+  //ex 7
+  val fibs: Stream[Int] = {
+    @tailrec
+    def _fib(n:Int, acc1: Int, acc2: Int): Int = n match{
+      case 0 => acc1
+      case 1 => acc2
+      case _ => _fib(n-1, acc2, acc1+acc2)
+    }
+    //generating infinite stream
+    map(iterate(0)(_+1))(_fib(_,0, 1))
+  }
 }

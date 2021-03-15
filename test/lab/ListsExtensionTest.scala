@@ -45,4 +45,10 @@ class ListsExtensionTest {
     val list : Lists.List[Person] = Cons(Student("Marco", 2020), Cons(Teacher("Bravetti", "LCMC"), Cons(Teacher("Ricci", "PCD"), Nil())))
     assertEquals(Cons("LCMC", Cons("PCD", Nil())), coursesByPeople(list))
   }
+
+  @Test def testFoldLeft(): Unit ={
+    val list = Cons(1, Cons(2, Cons(3, Nil())))
+    assertEquals(6, foldLeft(list)(0)(_+_))
+    assertEquals(8, foldLeft(list)(2)(_+_))
+  }
 }

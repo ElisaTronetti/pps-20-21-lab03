@@ -50,4 +50,14 @@ object ListsExtension {
     case Teacher(_,c) => Cons(c, Nil())
     case _ => Nil()
   })
+
+  //ex 4
+  //i drop the first element in list, i take the head and apply the function with the value
+  //in input and then recursive iteration until the end of the list (return init at the end)
+  @tailrec
+  def foldLeft[A, B](l: List[A])(init: B)(f: (A,B) => B): B = l match {
+    case Cons(h,_) => foldLeft(drop(l,1))(f(h,init))(f)
+    case _ => init
+  }
+
 }

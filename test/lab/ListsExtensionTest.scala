@@ -34,6 +34,7 @@ class ListsExtensionTest {
   @Test def testFilter(){
     val list = Cons(10, Cons(20, Cons(30, Nil())))
     assertEquals(Cons(20, Cons(30, Nil())), filter(list)(_ >=20))
+    assertEquals(list, filter(list)(_ >=10))
   }
 
   @Test def testMax(){
@@ -44,6 +45,9 @@ class ListsExtensionTest {
   @Test def testCoursesByPeople() {
     val list : Lists.List[Person] = Cons(Student("Marco", 2020), Cons(Teacher("Bravetti", "LCMC"), Cons(Teacher("Ricci", "PCD"), Nil())))
     assertEquals(Cons("LCMC", Cons("PCD", Nil())), coursesByPeople(list))
+
+    val list1: Lists.List[Person] = Cons(Student("Marco", 2020), Cons(Student("Bravetti", 2020), Nil()))
+    assertEquals(Nil(), coursesByPeople(list1))
   }
 
   @Test def testFoldLeft(): Unit ={

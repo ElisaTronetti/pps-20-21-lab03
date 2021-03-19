@@ -29,4 +29,11 @@ object StreamExtension {
     //generating infinite stream
     map(iterate(0)(_+1))(_fib(_,0, 1))
   }
+
+  //not mine, but it's the better version => by @giacomocavalieri
+  val fibs1: Stream[Int] = {
+    def _fib(prev: Int, curr: Int): Stream[Int] = cons(prev, _fib(curr, prev+curr))
+    _fib(0, 1)
+  }
+
 }
